@@ -23,4 +23,27 @@ ORDER BY imdb_rating DESC LIMIT 5;
 
 SELECT * FROM moviesdb.movies
 WHERE industry="Hollywood"
-ORDER BY imdb_rating DESC LIMIT 5 OFFSET 1
+ORDER BY imdb_rating DESC LIMIT 5 OFFSET 1;
+
+SELECT ROUND(AVG(imdb_rating),2) as avg_rating,
+	MIN(imdb_rating) as min_rating,
+    MAX(imdb_rating) as max_rating
+FROM moviesdb.movies
+WHERE studio = "Marvel Studios";
+
+SELECT studio,
+count(studio) as cnt,
+round(avg(imdb_rating),2) as avg_rating
+FROM moviesdb.movies
+WHERE studio!=""
+GROUP BY studio
+ORDER BY avg_rating DESC;
+
+SELECT release_year,
+count(release_year) as cnt
+FROM moviesdb.movies
+GROUP BY release_year
+HAVING cnt >= 2
+ORDER BY cnt DESC
+
+

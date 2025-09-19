@@ -1,0 +1,2 @@
+SELECT *
+FROM moviesdb.actors
